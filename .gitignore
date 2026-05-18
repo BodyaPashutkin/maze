@@ -1,0 +1,9 @@
+build/
+cmake-build-*/
+.idea/
+.DS_Store
+*.o
+*.a
+*.dylib
+maze_app
+maze_tests
