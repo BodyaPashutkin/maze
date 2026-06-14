@@ -21,9 +21,7 @@ MazeGenerator::MazeGenerator(int w, int h) : width(w), height(h) {
 };
 
 void MazeGenerator::generate(int startX, int startY) {
-// ВСТАВЬ СЮДА ЛОГИКУ DFS (из предыдущих ответов)
-// Учти, что переменные width, height, grid теперь члены класса.
-    // Инициализируем генератор случайных чисел (Mersenne Twister)
+    // Инициализируем генератор случайных чисел
     std::random_device rd;
     std::mt19937 rng(rd());
 
@@ -35,7 +33,7 @@ void MazeGenerator::generate(int startX, int startY) {
     stack.push_back({startX, startY});
 
     // Удобная структура для перебора направлений
-    // {смещение_x, смещение_y, стена_со_стороны_текущей, стена_со_стороны_соседа}
+    // (смещение x, смещение y, стена со стороны текущей, стена со стороны соседа)
     struct Direction { int dx, dy; CellState wall, opp_wall; };
     Direction dirs[4] = {
         {0, -1, WALL_TOP, WALL_BOTTOM},  // Вверх
@@ -85,7 +83,6 @@ void MazeGenerator::generate(int startX, int startY) {
 };
 
 std::vector<int> MazeGenerator::solveBFS(int startX, int startY, int endX, int endY) {
-    // ВСТАВЬ СЮДА ЛОГИКУ BFS
   // Ищет путь от (startX, startY) до (endX, endY). По умолчанию из левого верхнего в правый нижний угол.
     if (endX == -1) endX = width - 1;
     if (endY == -1) endY = height - 1;
@@ -154,8 +151,6 @@ std::vector<int> MazeGenerator::solveBFS(int startX, int startY, int endX, int e
 };
 
 void MazeGenerator::printToConsole(int playerX, int playerY, const std::vector<int>& path) const {
-// ВСТАВЬ СЮДА ЛОГИКУ ОТРИСОВКИ
-
 // Добавляем аргумент со значением по умолчанию (пустой путь)
     // Создаем быстрый массив-маску для проверки, принадлежит ли клетка пути
     std::vector<bool> isPath(width * height, false);
